@@ -6,128 +6,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>eVault - Blockchain Court Case Management</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="{% static 'vault/css/styles.css' %}">
+
+    <!-- External Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-
-        body {
-            font-family: 'Verdana', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('https://as1.ftcdn.net/v2/jpg/02/59/14/28/1000_F_259142843_DMIYHaNmzRMJfcKil0dNSWgpijFsxVj1.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-        }
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            animation: fadeInDown 1s;
-        }
-        header p {
-            margin: 5px 0 0;
-            font-size: 1.2rem;
-            animation: fadeInUp 1s;
-        }
-        .container {
-            padding: 50px 20px;
-            text-align: center;
-        }
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .feature-card {
-            width: 400px;
-            background: rgba(0, 0, 0, 0.75);
-            padding: 30px;
-            border-radius: 12px;
-            {% comment %} box-shadow: 0 0 15px #00f2fe, 0 0 5px #4facfe; {% endcomment %}
-            backdrop-filter: blur(6px);
-            animation: fadeInRight 1s;
-            transition: all 0.3s ease-in-out;
-            transform: translateY(0);
-          }
-          
-          .feature-card:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 0 5px #00f2fe, 0 0 5px #4facfe, 0 0 5px #00f2fe;
-          }
-        .feature-card i {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            color: #00f2fe;
-        }
-        .feature-card h3 {
-            margin: 10px 0;
-            font-size: 1.5rem;
-        }
-        .feature-card p {
-            font-size: 1rem;
-            color: #ddd;
-        }
-        footer {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-    </style>
 </head>
-<body>
-    <header>
-        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
-            <div style="display: flex; align-items: center;">
-                <img src="{% static "vault/images/logo2.png" %}" alt="BlockVault Logo" style="height: 50px; margin-right: 10px;">
-                <h1 class="animate__animated animate__fadeInDown">BlockVault</h1>
-            </div>
-            <nav style="display: flex; gap: 15px;">
-                <a href="{% url "login" %}" style="color: #fff; text-decoration: none; padding: 10px 20px; border: 2px solid #00f2fe; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease;">
-                    Login
-                </a>
-                <a href="{% url "register" %}" style="color: #fff; text-decoration: none; padding: 10px 20px; border: 2px solid #00f2fe; border-radius: 5px; transition: background-color 0.3s ease, color 0.3s ease;">
-                    Register
-                </a>
-            </nav>
-            <style>
-                nav a:hover {
-                    background-color: #00f2fe;
-                    color: #000;
-                }
-            </style>
-        </div>
-       
-    </header>
-    <div class="container">
-        <h2 class="animate__animated animate__fadeInUp">Features</h2>
-        <div class="features">
-            <div class="feature-card animate__animated animate__zoomIn">
-                <i class="fas fa-lock"></i>
-                <h3>Secure Storage</h3>
-                <p>Store case files securely using blockchain technology.</p>
-            </div>
-            <div class="feature-card animate__animated animate__zoomIn">
-                <i class="fas fa-sync-alt"></i>
-                <h3>Immutable Records</h3>
-                <p>Ensure tamper-proof records for all court cases.</p>
-            </div>
-            <div class="feature-card animate__animated animate__zoomIn">
-                <i class="fas fa-search"></i>
-                <h3>Easy Retrieval</h3>
-                <p>Quickly access case details with advanced search features.</p>
-            </div>
-        </div>
-    </div>
-    <footer>
-        &copy; 2025 BlockVault Systems. All rights reserved.
-    </footer>
-</body>
-</html>
 
+{% include "vault/header.html" %}
+    <body>
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2>Revolutionizing Judicial Processes with Blockchain</h2>
+                <p>India's judiciary is overwhelmed with pending cases. <br>
+                LegaleVault empowers courts with secure, immutable, and easily accessible case file management.</p>
+            </section>
+    
+            <!-- Features Section -->
+            <section class="features-section">
+                <h2>Key Features</h2>
+                <div class="features">
+                    <div class="feature-card animate__animated animate__zoomIn">
+                        <i class="fas fa-lock"></i>
+                        <h3>Secure Storage</h3>
+                        <p>Store case files securely using blockchain technology.</p>
+                    </div>
+                    <div class="feature-card animate__animated animate__zoomIn">
+                        <i class="fas fa-sync-alt"></i>
+                        <h3>Immutable Records</h3>
+                        <p>Ensure tamper-proof records for all court cases.</p>
+                    </div>
+                    <div class="feature-card animate__animated animate__zoomIn">
+                        <i class="fas fa-search"></i>
+                        <h3>Easy Retrieval</h3>
+                        <p>Quickly access case details with advanced search features.</p>
+                    </div>
+                </div>
+            </section>
+    
+            <!-- Statistics Section -->
+            <section class="stats-section">
+                <h2>Current Judicial Landscape in India</h2>
+                <div class="stats">
+                    <div class="stat-card animate__animated animate__fadeInUp">
+                        <h3>4.7+ Crore</h3>
+                        <p>Pending Cases Across All Courts</p>
+                    </div>
+                    <div class="stat-card animate__animated animate__fadeInUp">
+                        <h3>2.6 Crore</h3>
+                        <p>Pending Cases in District & Subordinate Courts</p>
+                    </div>
+                    <div class="stat-card animate__animated animate__fadeInUp">
+                        <h3>79,000+</h3>
+                        <p>Pending Cases in the Supreme Court</p>
+                    </div>
+                    <div class="stat-card animate__animated animate__fadeInUp">
+                        <h3>12+ Years</h3>
+                        <p>Average Time for Case Resolution</p>
+                    </div>
+                </div>
+            </section>
+    
+            <!-- Call To Action -->
+            <section class="cta-section">
+                <h2>Building a Future of Swift Justice</h2>
+                <p>Join us in accelerating legal proceedings and bringing timely justice to millions.</p>
+                <a href="{% url 'register' %}" class="cta-button">Get Started</a>
+            </section>
+    
+        </div>
+    </main>
+    
+
+</body>
+    {% include "vault/footer.html" %}
+
+</html>

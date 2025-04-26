@@ -1,0 +1,82 @@
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: calc(100vh - 200px);
+}
+
+.profile-card {
+    background: #1e1e2f;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: relative;
+}
+
+.profile-header {
+    margin-bottom: 20px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #00f2fe;
+}
+
+.user-role {
+    font-size: 0.9rem;
+    color: #00f2fe;
+    margin-top: 5px;
+}
+
+.profile-details {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.detail-item {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.profile-actions {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #00f2fe;
+    color: #000;
+}
+
+.btn-primary:hover {
+    background-color: #00c3d9;
+}
+
+.btn-secondary {
+    background-color: #444;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #666;
+}

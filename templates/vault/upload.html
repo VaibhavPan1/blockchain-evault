@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - BlockVault</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{% static 'vault/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'vault/css/upload.css' %}">
+</head>
+{% include "vault/header.html" %}
+<body>
+
+    
+
+    <!-- Login Form -->
+    <div class="container">
+        <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+            {% if error_message %}
+                <div style="color: red; text-align: center; margin-bottom: 15px;">{{ error_message }}</div>
+            {% endif %}
+            {% csrf_token %}
+            <h2>Upload Document</h2>
+            
+            <input type="file" name="file" id="file" required>
+
+            <button type="submit">Upload</button>
+
+            
+        </form>
+    </div>
+
+
+
+</body>
+{% include "vault/footer.html" %}
+</html>

@@ -2,11 +2,26 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class User(AbstractUser):
-    ROLE_CHOICES = (
-        ('judge', 'Judge'),
+    USER_TYPES = [
+        ('client', 'Client'),
         ('lawyer', 'Lawyer'),
-    )
-    role = models.CharField(max_length=10, choices=ROLE_CHOICES)
+        ('court', 'Court'),
+    ]
+    user_type = models.CharField(max_length=6, choices=USER_TYPES, default='client')
+
+    @property
+    def full_name(self):
+        """Returns the user's full name by combining first_name and last_name."""
+        return f"{self.first_name} {self.last_name}".strip()
+
+    def __str__(self):
+        return self.username
+    
+class File(models.Model):
+    file_name = models.CharField(max_length=255)
+    uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    cid = models.CharField(max_length=255)
 
 
 class PublicKey(models.Model):
@@ -17,12 +32,6 @@ class PrivateKey(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     encrypted_private_key = models.TextField()
 
-class File(models.Model):
-    file_name = models.CharField(max_length=255)
-    uploaded_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-    original_file_name = models.CharField(max_length=255)
-    encrypted_file_path = models.CharField(max_length=255)
 
 class FileKey(models.Model):
     file = models.ForeignKey(File, on_delete=models.CASCADE)

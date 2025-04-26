@@ -8,156 +8,32 @@
     <title>Login - BlockVault</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <style>
-        body {
-            font-family: 'Verdana', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('https://thumbs.dreamstime.com/b/wooden-gavel-placed-table-blurry-background-evoking-courtroom-atmosphere-357007862.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: #fff;
-        }
-        header {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            animation: fadeInDown 1s;
-        }
-        header p {
-            margin: 5px 0 0;
-            font-size: 1.2rem;
-            animation: fadeInUp 1s;
-        }
-        nav {
-            display: flex;
-            gap: 15px;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border: 2px solid #00f2fe;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        nav a:hover {
-            background-color: #00f2fe;
-            color: #000;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 100px);
-            padding: 20px;
-        }
-
-        form {
-            background: rgba(0, 0, 0, 0.75);
-            padding: 30px;
-            border-radius: 10px;
-            width: 100%;
-            max-width: 400px;
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #00f2fe;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-            color: #ddd;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: none;
-            border-radius: 5px;
-            font-size: 14px;
-            background: #333;
-            color: #fff;
-            transition: border 0.3s ease;
-        }
-
-        input:focus {
-            outline: none;
-            border: 2px solid #00f2fe;
-        }
-
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #00f2fe;
-            color: #000;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #00c3d9;
-        }
-
-        .forgot-password {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 0.9rem;
-        }
-
-        .forgot-password a {
-            color: #00f2fe;
-            text-decoration: none;
-        }
-
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            background: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'vault/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'vault/css/login.css' %}">
 </head>
+{% include "vault/header.html" %}
 <body>
-
-    <!-- Header -->
-    <header>
-        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 20px;">
-            <div style="display: flex; align-items: center;">
-                <img src="{% static 'vault/images/logo2.png' %}" alt="BlockVault Logo" style="height: 50px; margin-right: 10px;">
-                <h1 class="animate__animated animate__fadeInDown">BlockVault</h1>
-            </div>
-            <nav>
-                <a href="{% url 'login' %}">Login</a>
-                <a href="{% url 'register' %}">Register</a>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Login Form -->
+     <div class="overlay"></div>
     <div class="container">
-        <form method="post">
+        <form method="post" action="{% url 'login' %}">
+            <div class="close">
+                <a href="/">&times;</a>
+            </div>
+           
+            {% comment %} {% if error_message %}
+                <div style="color: red; z-index:1000; text-align: center; margin-bottom: 15px;">{{ error_message }}fghfghf</div>
+            {% endif %} {% endcomment %}
+            {% if messages %}
+            {% for message in messages %} <br>
+            {% if messages.tags == 'success' %}
+            <div style="color: #00ff07;z-index:1000;text-align: center;margin-bottom: 15px;font-weight: bold;">{{ message }}</div><br>
+            {% else %}
+            <div style="color: red; z-index:1000; text-align: center; margin-bottom: 15px; font-weight: bold;">{{ message }}</div><br>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
             {% csrf_token %}
-            <h2>Login to Your Account</h2>
+            <h2>Login</h2>
 
             {% comment %} <label for="username">Username</label> {% endcomment %}
             <input type="text" name="username" id="username" placeholder="Enter your username" required>
@@ -174,10 +50,6 @@
         </form>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2025 BlockVault Systems. All rights reserved.
-    </footer>
-
 </body>
+{% include "vault/footer.html" %}
 </html>

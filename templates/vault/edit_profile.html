@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Profile - LegaleVault</title>
+    <link rel="stylesheet" href="{% static 'vault/css/styles.css' %}">
+</head>
+{% include "vault/header.html" %}
+<body>
+<div class="container">
+    <form method="POST" class="profile-form">
+        {% csrf_token %}
+        <h2>Edit Profile</h2>
+
+        <label for="first_name">First Name</label>
+        <input type="text" name="first_name" value="{{ user.first_name }}" required>
+
+        <label for="last_name">Last Name</label>
+        <input type="text" name="last_name" value="{{ user.last_name }}" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" value="{{ user.email }}" required>
+
+        <label for="user_type">User Type</label>
+        <select name="user_type" required>
+            <option value="client" {% if user.user_type == 'client' %}selected{% endif %}>Client</option>
+            <option value="lawyer" {% if user.user_type == 'lawyer' %}selected{% endif %}>Lawyer</option>
+            <option value="court" {% if user.user_type == 'court' %}selected{% endif %}>Court</option>
+        </select>
+
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
+</body>
+{% include "vault/footer.html" %}
+</html>

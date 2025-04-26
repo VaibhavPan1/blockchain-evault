@@ -1,0 +1,97 @@
+body {
+    font-family: 'Verdana', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    color: #fff;
+}
+header {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    animation: fadeInDown 1s;
+}
+
+.files-container {
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 100px);
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* border-radius: 12px; */
+    width: 100%;
+    margin: 0 auto;
+    animation: fadeInUp 1s;
+
+}
+
+#header2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #00f2fe;
+}
+
+.files-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.files-table th, .files-table td {
+    border: 1px solid #00f2fe;
+    padding: 12px 20px;
+    text-align: left;
+}
+
+.files-table th {
+    background-color: rgba(0, 242, 254, 0.2);
+}
+
+.files-table tr:hover {
+    background-color: rgba(0, 242, 254, 0.1);
+}
+
+.btn-download {
+    background-color: #00f2fe;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+
+    
+
+}
+
+.btn-download:hover {
+    background-color: #4facfe;
+    color: #fff;
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+    .files-table th, .files-table td {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}

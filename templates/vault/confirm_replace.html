@@ -1,0 +1,14 @@
+<h2>File Already Exists</h2>
+<p>A file named <strong>{{ filename }}</strong> already exists under your account.</p>
+<p>Do you want to replace it?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="confirm" value="yes" />
+    <input type="hidden" name="filename" value="{{ filename }}" />
+    <button type="submit">✅ Yes, replace it</button>
+</form>
+
+<form method="get" action="{% url 'upload' %}">
+    <button type="submit">❌ No, cancel</button>
+</form>

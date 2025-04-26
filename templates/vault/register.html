@@ -14,191 +14,56 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        background: url("https://as1.ftcdn.net/v2/jpg/02/59/14/28/1000_F_259142843_DMIYHaNmzRMJfcKil0dNSWgpijFsxVj1.jpg")
-          no-repeat center center fixed;
-        background-size: cover;
-        font-family: "Verdana", sans-serif;
-        color: #fff;
-      }
 
-      header {
-        background: rgba(0, 0, 0, 0.7);
-        padding: 20px;
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      header h1 {
-        margin: 0;
-        font-size: 2.5rem;
-        animation: fadeInDown 1s;
-      }
-
-      nav a {
-        color: #fff;
-        text-decoration: none;
-        padding: 10px 20px;
-        border: 2px solid #00f2fe;
-        border-radius: 5px;
-        transition: background-color 0.3s ease, color 0.3s ease;
-      }
-
-      nav a:hover {
-        background-color: #00f2fe;
-        color: #000;
-      }
-
-      .nav-wrapper {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
-      }
-
-      .nav-wrapper img {
-        height: 50px;
-        margin-right: 10px;
-      }
-
-      .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: calc(100vh - 100px);
-        padding: 20px;
-      }
-
-      form {
-        background: rgba(0, 0, 0, 0.75);
-        padding: 30px;
-        border-radius: 10px;
-        width: 100%;
-        max-width: 400px;
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-        animation: fadeInUp 1s;
-      }
-
-      h2 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #00f2fe;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 5px;
-        font-size: 14px;
-        color: #ddd;
-      }
-
-      input,
-      select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: none;
-        border-radius: 5px;
-        font-size: 14px;
-        background: #333;
-        color: #fff;
-        transition: border 0.3s ease;
-      }
-
-      input:focus,
-      select:focus {
-        outline: none;
-        border: 2px solid #00f2fe;
-      }
-
-      button {
-        width: 100%;
-        padding: 10px;
-        background-color: #00f2fe;
-        color: #000;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-        background-color: #00c3d9;
-    }
-
-      a {
-        color: #eee;
-        text-align: center;
-        display: block;
-        margin-top: 15px;
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-
-      footer {
-        background: rgba(0, 0, 0, 0.7);
-        padding: 10px;
-        text-align: center;
-        font-size: 0.9rem;
-      }
-    </style>
+    <link rel="stylesheet" href="{% static 'vault/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static "vault/css/reg_style.css" %}">
   </head>
-  <body>
-    <header>
-      <div class="nav-wrapper">
-        <div style="display: flex; align-items: center">
-          <img
-            src="{% static 'vault/images/logo2.png' %}"
-            alt="BlockVault Logo"
-          />
-          <h1 class="animate__animated animate__fadeInDown">BlockVault</h1>
-        </div>
-        <nav style="display: flex; gap: 15px">
-          <a href="{% url 'login' %}">Login</a>
-          <a href="{% url 'register' %}">Register</a>
-        </nav>
-      </div>
-    </header>
 
+  {% include "vault/header.html" %}
+  <body>
+    <div class="overlay"></div>
     <div class="container">
       <form method="post">
+        <div class="close">
+          <a href="/">&times;</a>
+      </div>
+
+            {% if messages %}
+            {{ messages.tags}} <br>
+            {% for message in messages %} <br>
+            <div style="color: red; z-index:1000; text-align: center; margin-bottom: 15px;">{{ message }}</div><br>
+            {% endfor %}
+            {% endif %}
+
         {% csrf_token %}
         <h2 class="animate__animated animate__fadeInUp">Sign Up</h2>
+    
+        <!-- Error messages -->
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p class="alert">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    
         <input type="text" name="name" placeholder="Full Name" required />
         <input type="text" name="username" placeholder="Username" required />
         <input type="email" name="email" placeholder="Email Address" required />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          required
-        />
-        <input
-          type="password"
-          name="confirm_password"
-          placeholder="Confirm Password"
-          required
-        />
-
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+    
         <select name="user_type" required>
-          <option value="" disabled selected>Select User Type</option>
-          <option value="client">Client</option>
-          <option value="lawyer">Lawyer</option>
-          <option value="court">Court</option>
+            <option value="" disabled selected>Select User Type</option>
+            <option value="client">Client</option>
+            <option value="lawyer">Lawyer</option>
+            <option value="court">Court</option>
         </select>
-
+    
         <button type="submit">Register</button>
         <a href="{% url 'login' %}">Already have an account? Login</a>
-      </form>
+    </form>
     </div>
-
-    <footer>&copy; 2025 BlockVault Systems. All rights reserved.</footer>
   </body>
+  {% include "vault/footer.html" %}
 </html>
