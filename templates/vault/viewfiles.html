@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="{% static 'vault/css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'vault/css/viewfiles.css' %}">
 </head>
-{% include "vault/header.html" %}
 <body>
-    
+
+{% include "vault/header.html" %}
 
     <div class="files-container">
-        <h1 id='header2' class="animate__animated animate__fadeInUp">📁 Files in Your Vault</h1>
+        <h1 id='header2'>📁 Files in Your Vault</h1>
         <table class="files-table">
             <thead>
                 <tr>
@@ -47,7 +47,7 @@
             </tbody>
         </table>
     </div>
-
+    {% include "vault/footer.html" %}
 </body>
-{% include "vault/footer.html" %}
+
 </html>

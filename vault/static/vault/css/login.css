@@ -6,6 +6,7 @@
     height: calc(100vh - 100px);
     padding: 20px;
     position: relative;
+    height:100vh;
 }
 
 /* Overlay for soft background blur */
@@ -33,6 +34,10 @@ form {
     animation: fadeInUp 0.8s ease-out;
     position: relative;
     z-index: 300;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Animation for form */

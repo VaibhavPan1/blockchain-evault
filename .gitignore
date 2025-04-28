@@ -17,3 +17,4 @@ media/
 .envrc
 *.egg-info/
 celerybeat-schedule
+evault.code-workspace

@@ -22,70 +22,9 @@ abi = os.getenv("ABI")
 
 
 ipfs_handler = IPFSHandler()
-# db_handler = DBHandler(host="localhost", user='root', password='1312', database='web3')
 contract_handler = ContractHandler()
 
 BASE_DIR = Path(__file__).resolve().parent
-
-# abi = [
-#     {
-#         "inputs": [
-#             {
-#                 "internalType": "string",
-#                 "name": "fileName",
-#                 "type": "string"
-#             },
-#             {
-#                 "internalType": "string",
-#                 "name": "fileHash",
-#                 "type": "string"
-#             }
-#         ],
-#         "name": "storeFile",
-#         "outputs": [],
-#         "stateMutability": "nonpayable",
-#         "type": "function"
-#     },
-#     {
-#         "inputs": [
-#             {
-#                 "internalType": "string",
-#                 "name": "fileName",
-#                 "type": "string"
-#             }
-#         ],
-#         "name": "getFileHash",
-#         "outputs": [
-#             {
-#                 "internalType": "string",
-#                 "name": "",
-#                 "type": "string"
-#             }
-#         ],
-#         "stateMutability": "view",
-#         "type": "function"
-#     },
-#     {
-#         "inputs": [
-#             {
-#                 "internalType": "string",
-#                 "name": "",
-#                 "type": "string"
-#             }
-#         ],
-#         "name": "fileHashes",
-#         "outputs": [
-#             {
-#                 "internalType": "string",
-#                 "name": "",
-#                 "type": "string"
-#             }
-#         ],
-#         "stateMutability": "view",
-#         "type": "function"
-#     }
-# ]
-# contract_address = "0xb2100aDf3B5b8c48D2224f0B23095e8c58933E37"
 
 
 def register_view(request):
@@ -308,5 +247,27 @@ def edit_profile(request):
 
 @login_required
 def change_password(request):
+    
+    if request.method == 'POST':
+        current_password = request.POST.get('old_password')
+        new_password = request.POST.get('new_password')
+        confirm_new_password = request.POST.get('confirm_password')
+
+        # Check if the current password is correct
+        if not request.user.check_password(current_password):
+            messages.error(request, "Current password is incorrect.")
+            return redirect('change_password')
+
+        # Check if new passwords match
+        if new_password != confirm_new_password:
+            messages.error(request, "New passwords do not match.")
+            return redirect('change_password')
+
+        # Update the password
+        request.user.password = make_password(new_password)
+        request.user.save()
+
+        messages.success(request, "Password changed successfully! Please login again.")
+        return redirect('dashboard')
     
     return render(request, 'vault/change_password.html')

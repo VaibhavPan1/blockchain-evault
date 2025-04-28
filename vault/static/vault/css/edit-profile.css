@@ -1,0 +1,104 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+form {
+    background: url("https://as1.ftcdn.net/v2/jpg/02/59/14/28/1000_F_259142843_DMIYHaNmzRMJfcKil0dNSWgpijFsxVj1.jpg")
+    no-repeat center ;
+    background-size: cover;
+    background-blend-mode: overlay;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s;
+    position: relative;
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h2 {
+    text-align: center;
+    margin: 20px;
+    color: #00f2fe;
+  }
+  
+  a{
+    color: #00f2fe;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  
+  
+  input,
+  select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus,
+  select:focus {
+    outline: none;
+    border: 2px solid #00f2fe;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #00f2fe;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #00c3d9;
+  }
+  
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+.close a{
+    color: #ffffff;
+    font-weight: bolder;
+    text-decoration: none;
+    padding: 5px;
+    background-color: #ec0d0d;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: block;
+}

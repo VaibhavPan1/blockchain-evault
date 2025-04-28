@@ -17,22 +17,30 @@
 
 <div class="container">
     <h2 class="animate__animated animate__fadeInUp" style="text-align: center; margin-bottom: 40px;">Welcome, {{ user.username }} 👋</h2>
+    <a href="{% url "upload" %}">
     <div class="dashboard-grid">
         <div class="card animate__animated animate__fadeInLeft">
             <i class="fas fa-upload"></i>
-            <h3> <a href="{% url "upload" %}">Upload Document</a> </h3>
+            <h3> Upload Document</h3>
             <p>Securely upload your legal documents to the blockchain-integrated vault.</p>
         </div>
+    </a> 
+
+        <a href="{% url "viewfiles" %}">
         <div class="card animate__animated animate__fadeInRight">
             <i class="fas fa-folder-open"></i>
-            <h3> <a href="{% url "viewfiles" %}">My Files</a></h3>
+            <h3> My Files</h3>
             <p>Access all your uploaded case files in one place.</p>
         </div>
+    </a>
+
+        <a href="{% url "profile" %}">
         <div class="card animate__animated animate__fadeInLeft">
             <i class="fas fa-user-shield"></i>
-            <h3> <a href="{% url "profile" %}">Account Settings</a>  </h3>
+            <h3> Account Settings  </h3>
             <p>Manage your account, credentials, and privacy settings.</p>
         </div>
+    </a>
         {% comment %} <div class="card animate__animated animate__fadeInRight">
             <i class="fas fa-history"></i>
             <h3>Activity Log</h3>

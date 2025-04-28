@@ -51,6 +51,7 @@ nav a:hover {
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
+
 }
 
 .card {
@@ -58,9 +59,10 @@ nav a:hover {
     padding: 30px;
     border-radius: 12px;
     width: 300px;
-    backdrop-filter: blur(6px);
+    height: 200px;
     animation: fadeInUp 1s;
     transition: all 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .card:hover {
@@ -76,6 +78,14 @@ nav a:hover {
 .card p {
     font-size: 1rem;
     color: #ccc;
+}
+
+.container a {
+    color: #00f2fe;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
 }
 
 footer {

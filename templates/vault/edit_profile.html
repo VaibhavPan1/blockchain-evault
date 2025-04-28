@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <title>Edit Profile - LegaleVault</title>
     <link rel="stylesheet" href="{% static 'vault/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'vault/css/edit-profile.css' %}">
 </head>
 {% include "vault/header.html" %}
 <body>
 <div class="container">
     <form method="POST" class="profile-form">
+        <div class="close">
+            <a href="{% url "profile" %}">&times;</a>
+        </div>
+       
         {% csrf_token %}
         <h2>Edit Profile</h2>
 

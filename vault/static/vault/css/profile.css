@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     padding: 40px 20px;
+    height: 100vh;
     min-height: calc(100vh - 200px);
 }
 
@@ -17,7 +18,9 @@
     position: relative;
 }
 
-.profile-header {
+.profile-header * {
+    font-size: 1.8rem;
+    color: #00f2fe !important;
     margin-bottom: 20px;
 }
 

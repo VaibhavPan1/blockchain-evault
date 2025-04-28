@@ -5,6 +5,7 @@
   min-height: calc(100vh - 100px);
   padding: 20px;
   position: relative;
+  height: 100vh;
 }
 
 form {
@@ -21,6 +22,10 @@ form {
   animation: fadeInUp 1s;
   position: relative;
   z-index: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h2 {

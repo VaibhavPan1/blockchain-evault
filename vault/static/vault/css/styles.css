@@ -13,6 +13,7 @@ html, body {
   background-size: cover;
   color: #fff;
   display: flex;
+  min-height: 120vh;
   flex-direction: column;
 }
 
